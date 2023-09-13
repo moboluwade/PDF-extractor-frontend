@@ -2,12 +2,12 @@
   --primary-color: #00B4FF;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
 
-.header{
+.header {
   position: fixed;
   height: 5rem;
   width: 100vw;
@@ -20,11 +20,12 @@ body{
   z-index: 100;
   /* box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.71); */
   backdrop-filter: blur(6px);
-  box-shadow: 0px 4px 4px 2px rgba(0,0,0,0.57);
-  -webkit-box-shadow: 0px 2px 10px 3px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 2px 10px 3px rgba(0,0,0,0.57);
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.57);
+  -webkit-box-shadow: 0px 2px 10px 3px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 2px 10px 3px rgba(0, 0, 0, 0.57);
 }
-.header> h2{
+
+.header>h2 {
   font-size: 2.6rem;
   font-weight: 800;
   padding-left: 6rem;
@@ -32,38 +33,43 @@ body{
   cursor: pointer;
   color: var(--primary-color);
 }
-.header> .functions{
+
+.header>.functions {
   display: inherit;
   cursor: pointer;
   padding-right: 6rem;
 }
-.header>.functions> h3{
+
+.header>.functions>h3 {
   padding: 0 1rem;
   text-decoration: line-through;
 }
 
-.upload-wrapper{
+.upload-wrapper {
   height: fit-content;
   padding-top: 5rem;
   margin: 0 3rem;
   height: 80vh;
-  /* height: 200vh; */
+  /* height: 200vh;cd  */
   max-width: 100vw;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
 }
-.welcome-text{
+
+.welcome-text {
   width: 50%;
   margin-left: 3rem;
 }
-.welcome-text>h1{
+
+.welcome-text>h1 {
   font-size: 3.7rem;
   line-height: 110%;
   text-align: left;
 }
-.upload-card{
+
+.upload-card {
   width: 20rem;
   height: 20rem;
   border-radius: 18px;
@@ -76,16 +82,16 @@ body{
   background-color: white;
   cursor: pointer;
   /* background-color: green; */
-  box-shadow: 0px 4px 4px 2px rgba(0,0,0,0.57);
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.57);
   transition: transform 0.5s ease-out;
 }
 
-.upload-card:hover{
+.upload-card:hover {
   transform: scale(1.05);
   transition: transform 0.5 ease-in;
 }
 
-input{
+input {
   display: none;
 }
 
@@ -103,18 +109,18 @@ input{
 /* this gives the upload icon a curved rectangle border */
 /* it looks great stand-alone, but not with a lot of elments surrounding it */
 
-.upload-icon{
+.upload-icon {
   margin-top: 30px;
   margin-bottom: 20px;
   color: var(--primary-color);
 }
 
-.upload-icon:hover{
+.upload-icon:hover {
   opacity: 50%;
   transition: opacity 0.5s linear;
 }
 
-.upload-icon-button{
+.upload-icon-button {
   height: 50px;
   width: 200px;
   border: none;
@@ -126,11 +132,21 @@ input{
   background-color: var(--primary-color);
   transition: background-color 0.5s ease-out;
 }
-.upload-icon-button:hover{
+
+.upload-icon-button:hover {
   background-color: #858585;
   transition: background-color 0.5s ease-in;
 }
-.upload-icon-button> p{
+
+.button-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.button-label>p {
   letter-spacing: 0.5px;
   word-spacing: 1px;
   font-size: 1.4rem;
