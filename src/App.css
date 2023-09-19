@@ -153,3 +153,8 @@ input {
   text-align: center;
   color: white;
 }
+
+#editable-textarea{
+  width: 100%;
+  height: 100%;
+}
