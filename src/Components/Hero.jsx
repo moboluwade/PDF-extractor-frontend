@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import axios from "axios";
 import UploadCard from "./UploadCard";
 import DynamicSection from "./DynamicSection";
@@ -6,8 +6,9 @@ import DynamicSection from "./DynamicSection";
 const UPLOAD_ENDPOINT = "https://wesen-api.onrender.com/upload_pdf/"
 
 const fetchProcessedFile = async (file) => {
+    console.log("before try and catch")
     try {
-        console.log("sending request")
+        console.log("sending request now")
         const formData = new FormData()
         formData.set("pdf_content", file)
         const response = await axios.post(UPLOAD_ENDPOINT, file, {
@@ -18,15 +19,13 @@ const fetchProcessedFile = async (file) => {
                 "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Content-type": "application/pdf",
-                "Access-Control-Allow-Credentials": "true"
             }
         })
 
         const processedText = await response.json()
-        
+        console.log("response should be delivered")
         console.log(processedText)
         return processedText
-
     } catch (error) {
         console.log(error)
     }
@@ -40,16 +39,31 @@ const fetchProcessedFile = async (file) => {
 //3. notify the frontend that the response is ready
     // -once response has been returned let InteractiveTextEditor know the file is ready
     //[i'll make an alternative to just switch to InteractiveTextEditor immedidately the file is sent, and then add a loading screen there.]
-    // - in the interactiveTextEditor if t
+    // - set the result from the response and pass to InteractiveTextEditor
 
 const Hero = () => {
     const [switchToITE, setSwitchToITE] = useState(false)
-    const [result, setResult] = useState("")
+    const [result, setResult] = useState("PDF is loading...")
+    const [triggerFetch, setTriggerFetch] = useState(false)
+    const [file, setFile] = useState("")
+
+    const isMounted = useRef(false)
+    useLayoutEffect(
+        (file)=>{
+            if(isMounted.current){
+                const response = fetchProcessedFile(file)
+                setResult(response || "PDF is loading...")
+            }else{
+                isMounted.current = true
+            }
+        },
+        [triggerFetch]
+    )
 
     return (
         <div className="upload-wrapper">
             <DynamicSection switchToITE={switchToITE} result={result}/>
-            <UploadCard setResult={setResult} setSwitch={setSwitchToITE} fetchProcessedText={fetchProcessedFile}/>
+            <UploadCard file={file} setTriggerFetch={setTriggerFetch} setFile={setFile} setSwitch={setSwitchToITE}/>
         </div>
     )
 }

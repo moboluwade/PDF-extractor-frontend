@@ -1,10 +1,10 @@
 import InteractiveTextEditor from './InteractiveTextEditor'
 
-const DynamicSection = ({swtichToITE, result}) => {
+const DynamicSection = ({switchToITE, result}) => {
 
     return (
         <div className="dynamic section">
-            {swtichToITE ?
+            {switchToITE ?
                 <InteractiveTextEditor textData={result} />
                 :
                 <div className="welcome-text">

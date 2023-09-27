@@ -11,7 +11,8 @@ const InteractiveTextEditor = ({textData}) => {
 
     return (
         <div>
-            <textarea value={pdfText} onChange={(e) => { updateValue(e) }} name="editable-text" id="editable-textarea" placeholder='Pdf is loading...' >
+            <textarea value={pdfText} onChange={(e) => { updateValue(e) }} name="editable-text" id="editable-textarea" >
+                {pdfText}
             </textarea>
         </div>
     )

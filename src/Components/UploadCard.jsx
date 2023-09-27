@@ -1,15 +1,10 @@
-import { useState } from 'react';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 
-const UploadCard = ({setResult, setSwitch, fetchProcessedText}) => {
-    const [file, setFile] = useState("")
+const UploadCard = ({file, setFile, setTriggerFetch, setSwitch}) => {
 
     const onInputFileChange = (e) => {
-        setFile(e.target.file)
-        // const result = ()=>fetchProcessedText(file)
-        // setResult()
-        setResult(file)
+        setTriggerFetch(true)
         setSwitch(true)
     }
 
@@ -26,7 +21,7 @@ const UploadCard = ({setResult, setSwitch, fetchProcessedText}) => {
                 </label>
             </button>
 
-            <input onChange={(e) => { onInputFileChange(e) }} value={file} accept=".pdf, .jpg" type="file" name="pdfFile" id="upload" />
+            <input onChange={(e) => { setFile(e.target.value); onInputFileChange(e) }} value={file} accept=".pdf, .jpg" type="file" name="pdfFile" id="upload" />
             <p>or drop a file</p>
         </label>
     )
