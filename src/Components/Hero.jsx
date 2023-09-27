@@ -1,48 +1,55 @@
-import React, { useEffect, useState } from "react";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-import InteractiveTextEditor from './InteractiveTextEditor'
+import React, {useState} from "react";
+import axios from "axios";
+import UploadCard from "./UploadCard";
+import DynamicSection from "./DynamicSection";
+
+const UPLOAD_ENDPOINT = "https://wesen-api.onrender.com/upload_pdf/"
+
+const fetchProcessedFile = async (file) => {
+    try {
+        console.log("sending request")
+        const formData = new FormData()
+        formData.set("pdf_content", file)
+        const response = await axios.post(UPLOAD_ENDPOINT, file, {
+            withCredentials: false,
+            headers: {
+                "Access-Control-Allow-Credentials": "false",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Content-type": "application/pdf",
+                "Access-Control-Allow-Credentials": "true"
+            }
+        })
+
+        const processedText = await response.json()
+        
+        console.log(processedText)
+        return processedText
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//fetch function has to do three things//
+//1. send the file across over the internet
+    // -is triggered when the file is sent from UploadCard(or in this case changed)
+//2. retrieve the response from sending the file
+    // -store that response where? or no need for that, just pass it along into DynamicSection
+//3. notify the frontend that the response is ready
+    // -once response has been returned let InteractiveTextEditor know the file is ready
+    //[i'll make an alternative to just switch to InteractiveTextEditor immedidately the file is sent, and then add a loading screen there.]
+    // - in the interactiveTextEditor if t
 
 const Hero = () => {
-    const [file, setFile] = useState("")
-    const [isFileReady, setIsFileReady] = useState(false)
-    //waits for when pdf file is converted to text and is served
-    const onInputFileChange = (e) => {
-        setFile(e.target.file)
-        console.log(e.target.file)
-        console.log(e.target.value)
-    }
-    // useEffect(() => {
-    //     const res = await fetch('https://dummy.com/fake-endpoint')
-
-    // })
+    const [switchToITE, setSwitchToITE] = useState(false)
+    const [result, setResult] = useState("")
 
     return (
         <div className="upload-wrapper">
-            <div className="dynamic section">
-                {isFileReady ?
-                    <InteractiveTextEditor />
-                    :
-                    <div className="welcome-text">
-                        <h1>
-                            Upload a pdf and extract your text
-                        </h1>
-                        <img src="/si" alt="" srcset="" />
-                        {/* <img src={file} alt="" /> */}
-                    </div>
-                }
-            </div>
-            <label className="upload-card" htmlFor="upload">
-                <span className="custom-label upload-icon">
-                    <FileUploadIcon style={{ fontSize: "4rem" }} />
-                </span>
-                <button className="upload-icon-button">
-                    <label className="button-label" htmlFor="upload">
-                        <p>Upload file</p>
-                    </label>
-                </button>
-                <input onChange={(e) => { onInputFileChange(e) }} value={file} accept=".pdf, .jpg" type="file" name="pdfFile" id="upload" />
-                <p>or drop a file</p>
-            </label>
+            <DynamicSection switchToITE={switchToITE} result={result}/>
+            <UploadCard setResult={setResult} setSwitch={setSwitchToITE} fetchProcessedText={fetchProcessedFile}/>
         </div>
     )
 }
