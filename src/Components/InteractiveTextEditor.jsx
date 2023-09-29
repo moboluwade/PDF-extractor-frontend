@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const InteractiveTextEditor = ({textData}) => {
     const [pdfText, setPdfText] = useState(textData)
-    // this should take in the resulting data from the api
-    // is empty string as test
+    useEffect(()=>{
+        setPdfText(textData)
+    },[textData])
 
     const updateValue = (e) => {
         setPdfText(e.target.value)
