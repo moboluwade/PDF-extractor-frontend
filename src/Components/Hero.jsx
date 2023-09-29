@@ -3,7 +3,7 @@ import axios from "axios";
 import UploadCard from "./UploadCard";
 import DynamicSection from "./DynamicSection";
 
-const UPLOAD_ENDPOINT = "https://wesen-api.onrender.com/upload_pdf/"
+const UPLOAD_ENDPOINT = `${process.env.UPLOAD_ENDPOINT_URL}`
 
 const fetchProcessedFile = async (file) => {
     console.log("before try and catch")
