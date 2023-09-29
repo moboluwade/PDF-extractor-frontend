@@ -1,11 +1,11 @@
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 
-const UploadCard = ({file, setFile, setTriggerFetch, setSwitch}) => {
+const UploadCard = ({ setFile, setSwitch}) => {
 
     const onInputFileChange = (e) => {
-        setTriggerFetch(true)
         setSwitch(true)
+        
     }
 
     return (
@@ -21,7 +21,7 @@ const UploadCard = ({file, setFile, setTriggerFetch, setSwitch}) => {
                 </label>
             </button>
 
-            <input onChange={(e) => { setFile(e.target.value); onInputFileChange(e) }} value={file} accept=".pdf, .jpg" type="file" name="pdfFile" id="upload" />
+            <input onChange={(e) => {setFile(e.target.files[0]); onInputFileChange(e) }} accept=".pdf, .jpg" type="file" name="pdfFile" id="upload" />
             <p>or drop a file</p>
         </label>
     )

@@ -1,7 +1,7 @@
 import InteractiveTextEditor from './InteractiveTextEditor'
 
 const DynamicSection = ({switchToITE, result}) => {
-
+    console.log("result in dynamic section", result)
     return (
         <div className="dynamic section">
             {switchToITE ?
