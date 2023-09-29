@@ -3,7 +3,7 @@ import axios from "axios";
 import UploadCard from "./UploadCard";
 import DynamicSection from "./DynamicSection";
 
-const UPLOAD_ENDPOINT = `${process.env.UPLOAD_ENDPOINT_URL}`
+const UPLOAD_ENDPOINT = "https://wesen-api-osoj.onrender.com/upload_pdf/"
 
 //fetch function has to do three things//
 //1. send the file across over the internet
@@ -23,7 +23,7 @@ const Hero = () => {
     const fetchProcessedFile = async (file) => {
         try {
             const formData = new FormData()
-            formData.set("pdf_content", file)
+            formData.set("pdf_file", file)
             const response = await axios.post(UPLOAD_ENDPOINT, formData, {
                 headers: {
                     "Access-Control-Allow-Credentials": "true",
@@ -34,7 +34,7 @@ const Hero = () => {
                 }
             })
     
-            const processedText = await response.data()
+            const processedText = await response.data
             return processedText
         } catch (error) {
             console.log(error)
@@ -57,7 +57,6 @@ const Hero = () => {
         },
         [file]
     )
-
     return (
         <div className="upload-wrapper">
             <DynamicSection switchToITE={switchToITE} result={result}/>
