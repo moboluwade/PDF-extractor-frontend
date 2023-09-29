@@ -61,7 +61,7 @@ const Hero = () => {
     return (
         <div className="upload-wrapper">
             <DynamicSection switchToITE={switchToITE} result={result}/>
-            <UploadCard file={file} setFile={setFile} setSwitch={setSwitchToITE}/>
+            <UploadCard setFile={setFile} setSwitch={setSwitchToITE}/>
         </div>
     )
 }
