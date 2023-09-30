@@ -20,7 +20,7 @@
 
   .dynamic-section {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0;
   }
   .welcome-text-div{
