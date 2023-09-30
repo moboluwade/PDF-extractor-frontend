@@ -1,0 +1,87 @@
+
+.upload-card {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 18px;
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    background-color: white;
+    cursor: pointer;
+    /* background-color: green; */
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.57);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .upload-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.5 ease-in;
+  }
+  
+  input {
+    display: none;
+  }
+  
+  /* .upload-icon .make-typo-on-purpose{
+    color: #777777;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    border: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    margin-bottom: 100px;
+    cursor: pointer;
+  } */
+  /* this gives the upload icon a curved rectangle border */
+  /* it looks great stand-alone, but not with a lot of elments surrounding it */
+  
+  .upload-icon {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  .upload-icon:hover {
+    opacity: 50%;
+    transition: opacity 0.5s linear;
+  }
+  
+  .upload-icon-button {
+    height: 50px;
+    width: 200px;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    transition: background-color 0.5s ease-out;
+  }
+  
+  .upload-icon-button:hover {
+    background-color: #858585;
+    transition: background-color 0.5s ease-in;
+  }
+  
+  .button-label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+  
+  .button-label>p {
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    font-size: 1.4rem;
+    text-align: center;
+    color: white;
+  }
+  
+  

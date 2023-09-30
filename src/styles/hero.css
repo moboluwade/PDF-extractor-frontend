@@ -1,0 +1,17 @@
+
+.hero-wrapper {
+    padding: 5rem 0rem;
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 830px) {
+    .hero-wrapper{
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+    }
+  }

@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import axios from "axios";
 import UploadCard from "./UploadCard";
 import DynamicSection from "./DynamicSection";
+import "../styles/hero.css"
 
 const UPLOAD_ENDPOINT = "https://wesen-api-osoj.onrender.com/upload_pdf/"
 
@@ -58,9 +59,11 @@ const Hero = () => {
     )
 
     return (
-        <div className="upload-wrapper">
+        <div className="hero-wrapper">
             <DynamicSection switchToITE={switchToITE} result={result} />
-            <UploadCard setFile={setFile} setSwitch={setSwitchToITE} />
+            {!switchToITE &&
+                <UploadCard setFile={setFile} setSwitch={setSwitchToITE} />
+            }
         </div>
     )
 }
