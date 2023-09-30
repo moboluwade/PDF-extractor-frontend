@@ -12,10 +12,8 @@ const DynamicSection = ({ switchToITE, result }) => {
         width = "100%"
     } else {
         width = setWidth(switchToITE)
-        console.log(switchToITE)
-        console.log(width)
+
     }
-    console.log(width)
     
     return (
         <div style={{ maxWidth: width }} className="dynamic-section">
